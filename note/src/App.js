@@ -4,6 +4,9 @@ import Hello from './components/HelloComponent';
 import About from './components/AboutComponent';
 import Books from './components/BookComponent';
 import Home from  './components/Home';
+import Admin from  './components/Admin';
+import PrivateRoute from "./components/PrivateRoute.js"
+import LogIn from "./components/LogIn"
 // import route Components here
 import {
   BrowserRouter as Router,
@@ -13,6 +16,8 @@ import {
   Redirect
 } from 'react-router-dom'
 class App extends Component {
+
+
   render() {
     return (
     <Router>
@@ -22,14 +27,17 @@ class App extends Component {
                      <li><Link to="/hello">Hello</Link></li>
                      <li><Link to="/about">About</Link></li>
                      <li><Link to="/books">Books</Link></li>
+                     <li><Link to="/admin">Admin</Link></li>
                   </ul>
                     <hr/>
             <Switch>
-              <Route path="/" exact={true} component={Home} />
-              <Route path="/hello" component={Hello} />
-<Route path="/hello/goodmorning" render={() => { return      <h1>Goodmorning</h1> }} />              <Route path="/about" component={About} />
-              <Route path="/books" component={Books} />
-            </Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/hello" component={Hello} />
+            <Route path="/books" component={Books} />
+            <Route path="/login" component={LogIn}/>
+            <PrivateRoute authed={fakeAuth.isAuthenticated} path="/admin" component={Admin} />
+          </Switch>
           </div>
       </div>
     </Router>

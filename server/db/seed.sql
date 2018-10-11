@@ -1,0 +1,6 @@
+DROP TABLE IF EXIST note; 
+
+CREATE TABLE note(
+	id SERIAL PRIMARY KEY, 
+	
+)
